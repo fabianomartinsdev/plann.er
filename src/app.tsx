@@ -2,11 +2,14 @@ import { MapPin, Calendar, ArrowRight } from "lucide-react";
 
 export default function App() {
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-screen flex justify-center items-center bg-pattern bg-no-repeat bg-center">
       <div className="max-w-3xl w-full px-6 text-center space-y-10">
-        <p className="text-zinc-300 text-lg">
-          Convide seus amigos planeje sua próxima viagem!
-        </p>
+        <div className="flex flex-col items-center gap-3">
+          <img src="/logo.svg" alt="plann.er" />
+          <p className="text-zinc-300 text-lg">
+            Convide seus amigos planeje sua próxima viagem!
+          </p>
+        </div>
 
         <div className="h-16 bg-zinc-900 px-4 rounded flex items-center shadow-shape gap-3">
           <div className="flex items-center gap-2 flex-1">
@@ -14,15 +17,15 @@ export default function App() {
             <input
               type="text"
               placeholder="Para onde você vai?"
-              className="bg-transparent text-lg placeholder-zinc-400"
+              className="bg-transparent text-lg placeholder-zinc-400 outline-none"
             />
           </div>
-          <div className="flex items-center gap-2 w-56">
+          <div className="flex items-center gap-2">
             <Calendar className="size-5 text-zinc-400" />
             <input
               type="text"
               placeholder="Quando?"
-              className="bg-transparent text-lg placeholder-zinc-400 w-auto"
+              className="bg-transparent text-lg placeholder-zinc-400 w-48 outline-none"
             />
           </div>
           <div className="w-px h-6 bg-zinc-800"></div>
