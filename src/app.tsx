@@ -4,11 +4,13 @@ import {
   ArrowRight,
   UserRoundPlus,
   Settings2,
+  X,
 } from "lucide-react";
 import { useState } from "react";
 
 export default function App() {
   const [isGuestsInputOpen, setGuestsInputOpen] = useState(false);
+  const [isGuestsModalOpen, setIsGuestsModalOpen] = useState(false);
 
   function openGuestsInput() {
     setGuestsInputOpen(true);
@@ -16,6 +18,14 @@ export default function App() {
 
   function closeGuestsInput() {
     setGuestsInputOpen(false);
+  }
+
+  function openGuestsModal() {
+    setIsGuestsModalOpen(true);
+  }
+
+  function closeGuestsModal() {
+    setIsGuestsModalOpen(false);
   }
 
   return (
@@ -69,14 +79,16 @@ export default function App() {
           </div>
           {isGuestsInputOpen && (
             <div className="h-16 bg-zinc-900 px-4 rounded flex items-center shadow-shape gap-3">
-              <div className="flex items-center gap-2 w-full">
+              <button
+                type="button"
+                onClick={openGuestsModal}
+                className="flex items-center gap-2 w-full"
+              >
                 <UserRoundPlus className="size-5 text-zinc-400" />
-                <input
-                  type="text"
-                  placeholder="Quem estará na viagem?"
-                  className="bg-transparent text-lg placeholder-zinc-400 w-full outline-none"
-                />
-              </div>
+                <span className="text-zinc-400 text-lg flex-1 text-left">
+                  Quem estará na viagem?
+                </span>
+              </button>
               <button
                 onClick={openGuestsInput}
                 className="bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400 w-72"
@@ -100,6 +112,18 @@ export default function App() {
           </a>
           .
         </p>
+        {isGuestsModalOpen && (
+          <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
+            <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900">
+              <div className="flex items-center justify-between">
+                <h2>Selecionar convidados</h2>
+                <button onClick={closeGuestsModal}>
+                  <X className="size-5 text-zinc-400" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
